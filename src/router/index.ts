@@ -24,6 +24,11 @@ const router = createRouter({
       name: 'create_profile',
       component: () => import('../views/CreateProfile.vue')
     },
+    {
+      path: '/suggested_movies',
+      name: 'suggested_movies',
+      component: () => import('../views/SuggestedMovies.vue')
+    },
   ]
 })
 
