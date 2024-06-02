@@ -29,6 +29,7 @@
 import { ref } from 'vue';
 import { validatePassword } from '@/helpers/validators';
 import PasswordInput from '@/components/PasswordInput.vue';
+import router from '@/router';
 
 const email = ref('');
 const password = ref('');
@@ -36,16 +37,15 @@ const invalidPassword = ref(false);
 const passwordVisible = ref(false);
 function login(event: Event) {
   event.preventDefault();
-  console.log(email.value, password.value);
-  
-  if (!validatePassword(password.value)) {
-    invalidPassword.value = true;
-    return;
-  }
-  invalidPassword.value = false;
-  email.value = '';
-  password.value = '';
-  alert('Formulário enviado');
+  router.push('/profile');
+  // if (!validatePassword(password.value)) {
+  //   invalidPassword.value = true;
+  //   return;
+  // }
+  // invalidPassword.value = false;
+  // email.value = '';
+  // password.value = '';
+  // alert('Formulário enviado');
 }
 
 

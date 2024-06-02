@@ -25,7 +25,7 @@ import {vMaska} from "maska"
 import PasswordInput from '@/components/PasswordInput.vue';
 import { validatePassword } from '@/helpers/validators';
 const name = ref('');
-const birthdate = ref('');
+const dateOfBirth = ref('');
 const email = ref('');
 const password = ref('');
 const invalidPassword = ref(false);
@@ -39,7 +39,7 @@ function createAccount(event: Event) {
   invalidPassword.value = false;
   name.value = '';
   email.value = '';
-  birthdate.value = '';
+  dateOfBirth.value = '';
   password.value = '';
   alert('Formulário enviado');
 }
