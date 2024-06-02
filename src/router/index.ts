@@ -29,6 +29,11 @@ const router = createRouter({
       name: 'suggested_movies',
       component: () => import('../views/SuggestedMovies.vue')
     },
+    {
+      path: '/watchlist',
+      name: 'watchlist',
+      component: () => import('../views/WatchList.vue')
+    },
   ]
 })
 
