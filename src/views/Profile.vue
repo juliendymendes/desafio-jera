@@ -11,12 +11,15 @@
       <p class="text-center mt-2 text-lg">Perfil {{ n }}</p>
     </div>
     <div class="hover:scale-110 cursor-pointer">
-      <div
-        class="w-24 h-24 bg-transparent border border-slate-400 flex justify-center items-center"
-      >
-        <img src="/icons/add.svg" alt="Adicionar novo perfil" />
-      </div>
-      <p class="text-center mt-2 text-lg">Novo perfil</p>
+      <router-link to="/create_profile">
+        <div
+          class="w-24 h-24 bg-transparent border border-slate-400 flex justify-center items-center"
+        >
+          <img src="/icons/add.svg" alt="Adicionar novo perfil" />
+        </div>
+        <p class="text-center mt-2 text-lg">Novo perfil</p>
+        </router-link>
+      
     </div>
   </section>
 </template>
