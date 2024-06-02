@@ -30,22 +30,34 @@ import { ref } from 'vue';
 import { validatePassword } from '@/helpers/validators';
 import PasswordInput from '@/components/PasswordInput.vue';
 import router from '@/router';
+import { useAccountStore } from '@/stores/account';
 
 const email = ref('');
 const password = ref('');
 const invalidPassword = ref(false);
-const passwordVisible = ref(false);
+
+const accountStore = useAccountStore();
+
 function login(event: Event) {
   event.preventDefault();
+  if (!validatePassword(password.value)) {
+    invalidPassword.value = true;
+    return;
+  }
+  accountStore.setAccount({
+    name: "Juliendy",
+    date_of_birth: '01/01/1999',
+    email: email.value,
+    password: password.value,
+  })
+  // accountStore.login(
+  //   email.value,
+  //   password.value,
+  // );
   router.push('/profile');
-  // if (!validatePassword(password.value)) {
-  //   invalidPassword.value = true;
-  //   return;
-  // }
-  // invalidPassword.value = false;
-  // email.value = '';
-  // password.value = '';
-  // alert('Formulário enviado');
+  invalidPassword.value = false;
+  email.value = '';
+  password.value = '';
 }
 
 
