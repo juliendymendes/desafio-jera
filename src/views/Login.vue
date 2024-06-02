@@ -4,17 +4,10 @@
       <form class="shadow-lg p-5 flex flex-col gap-5 mx-5 md:mx-0 md:w-1/2" @submit="login">
         <h1 class="text-2xl">Entrar</h1>
         <label class="input input-bordered flex items-center gap-2">
-          <input type="email" class="grow" required placeholder="Email" />
+          <input type="email" v-model="email" class="grow" required placeholder="Email" />
         </label>
 
-        <div>
-          <label class="input input-bordered flex items-center gap-2">
-            <input :type="passwordVisible ? 'text' : 'password'" class="grow" required placeholder="Senha" />
-            <img src="/icons/visibility.svg" v-if="!passwordVisible" alt="Mostrar senha" width="24" class="cursor-pointer" @click="passwordVisible = true" />
-            <img src="/icons/visibility_off.svg" v-if="passwordVisible" alt="Esconder senha" width="24" class="cursor-pointer" @click="passwordVisible = false" />
-          </label>
-          <span class="text-sm text-red-500" v-if="invalidPassword">A senha precisa conter pelo menos 6 caracteres, uma letra maiúscula, um número e um caractere especial </span>
-        </div>
+        <PasswordInput :invalidPassword="invalidPassword" @update="passwordChange" />
         <button className="btn btn-primary" type="submit">Entrar</button>
         <div className="divider">OU</div>
         <div
@@ -34,23 +27,29 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import { validatePassword } from '@/helpers/validators';
+import PasswordInput from '@/components/PasswordInput.vue';
 
+const email = ref('');
+const password = ref('');
 const invalidPassword = ref(false);
 const passwordVisible = ref(false);
 function login(event: Event) {
   event.preventDefault();
-  const email = (event.target as HTMLFormElement).elements[0] as HTMLFormElement;
-  const password = (event.target as HTMLFormElement).elements[1] as HTMLFormElement;
+  console.log(email.value, password.value);
+  
   if (!validatePassword(password.value)) {
     invalidPassword.value = true;
     return;
   }
   invalidPassword.value = false;
+  email.value = '';
+  password.value = '';
   alert('Formulário enviado');
 }
-// Valida se a senha contém pelo menos 6 caracteres, uma letra maiúscula, um número e um caractere especial 
-function validatePassword(password: string) {
-  const regex = /^(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{6,}$/;
-  return regex.test(password);
+
+
+function passwordChange(newPassword: string) {
+  password.value = newPassword;
 }
 </script>
