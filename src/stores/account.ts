@@ -1,4 +1,3 @@
-import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 import type { Account } from '@/types/Account';
 import { BASE_URL } from '@/helpers/constants';
@@ -25,7 +24,7 @@ export const useAccountStore = defineStore('account', {
       this.account= newAccount
     },
     async login(email: string, password: string){ 
-      const response = await fetch(BASE_URL + '/login', {
+      const response = await fetch(BASE_URL + '/account/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -33,7 +32,10 @@ export const useAccountStore = defineStore('account', {
         body: JSON.stringify({ email, password })
       })
       const data = await response.json();
-      this.setAccount(data)
+      this.account = data
+			localStorage.setItem('account', JSON.stringify(data))
+			console.log("login");
+			console.log(data);
     },
     logout(){
       this.setAccount({
@@ -50,7 +52,6 @@ export const useAccountStore = defineStore('account', {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(account),
-        
       })
       this.setAccount(account)
       console.log(response)

@@ -44,20 +44,14 @@ function login(event: Event) {
     invalidPassword.value = true;
     return;
   }
-  accountStore.setAccount({
-    name: "Juliendy",
-    date_of_birth: '01/01/1999',
-    email: email.value,
-    password: password.value,
-  })
-  // accountStore.login(
-  //   email.value,
-  //   password.value,
-  // );
-  router.push('/profile');
+  accountStore.login(
+    email.value,
+    password.value,
+  );
   invalidPassword.value = false;
   email.value = '';
   password.value = '';
+  router.push('/profile');
 }
 
 
