@@ -1,39 +1,30 @@
-# desafio-jera
+# Desafio Jera
 
-This template should help get you started developing with Vue 3 in Vite.
+Este guia fornece instruções passo a passo sobre como configurar e rodar a aplicação Vue.js.
 
-## Recommended IDE Setup
+## Pré-requisitos
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- [Node.js](https://nodejs.org/) (v14.x ou superior)
+- [npm](https://www.npmjs.com/) (gerenciador de pacotes do Node.js)
 
-## Type Support for `.vue` Imports in TS
+## 1. Clonar o Repositório
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+Clone este repositório para o seu ambiente local:
 
-## Customize configuration
+```bash
+git clone https://github.com/juliendymendes/desafio-jera.git
+cd desafio-jera
+```
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+## 2. Instalar dependências
 
-## Project Setup
-
-```sh
+```bash
 npm install
 ```
 
-### Compile and Hot-Reload for Development
-
-```sh
+## 3. Iniciar aplicação
+```bash
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+A aplicação estará disponível no endereço http://localhost:5173/
