@@ -18,21 +18,20 @@
 </template>
 
 <script setup lang="ts">
-import { useAccountStore } from '@/stores/account';
+
 import { useProfileStore } from '@/stores/profile';
 import { ref } from 'vue';
 
 const name = ref('');
 const profileStore = useProfileStore();
-const accountStore = useAccountStore();
 function createProfile(event: Event) {
     event.preventDefault();
-    if (accountStore.getAccount) {
+    const account_id = JSON.parse(localStorage.getItem('account')).id
         profileStore.createProfile({
             name: name.value,
-            account_id: 1,
+            account_id: account_id,
         });
-    }
+    
     name.value = '';
     alert('Perfil criado');
 }
